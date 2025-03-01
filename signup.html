@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spotstar</title>
+    <style>
+        
+        *{
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        body{
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        form{
+            text-align: center;
+        }
+
+        .form
+        {
+           background: rgb(23, 41, 70);
+           color: white; 
+           width: 30%;
+           height: 50%;
+           padding: 2%;
+           margin: 2%;
+           border-radius: 2%;
+           box-shadow: 0px 0px 50px rgb(1, 30, 45);
+        }
+
+        p{
+            text-align: left;
+        }
+        
+        .ip{
+            width:95%;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #2d2d2d;
+            color: white;
+            font-size:larger;
+            padding-left: 20px;
+        }
+        .button{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+        }
+        .submit{
+            width:95%;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #262525;
+            color: white;
+            font-size:larger;
+        }
+        .submit:hover{
+            background-color:whitesmoke;
+            color: black;
+        }
+        
+    </style>
+    <script>
+        function SignUpValidation()
+        {
+            // Phone Number Validation
+            var Phone=document.getElementById("phone").value 
+            var flagPhone=false 
+            if((Phone>=6000000000)&&(Phone<=9999999999)){
+                flagPhone=true
+            }
+
+            // Email Validation
+            let email=document.getElementById("email").value
+            var upper=true
+            var count=0
+            var mail=false 
+            for(var i=0;i<email.length;i++){
+                var char=email[i]
+                if((char>='A')&&(char<='Z')){
+                    upper=false
+                }
+                if(char=='@'){
+                    count++
+                }
+            }
+            if((upper==true)&&(count==1)){
+                mail=true
+            }
+
+            // Password Validation
+            var Password=document.getElementById("password").value 
+            var upper=0
+            var lower=0
+            var Num=0
+            var special=0
+            var flagpassword=false
+            for(var i=0;i<Password.length;i++){
+                var char=Password[i]
+                if((char>='A')&&(char<='Z')){
+                    upper++
+                }else if((char>='a')&&(char<='z')){
+                    lower++
+                }else if((char>='0')&&(char<='9')){
+                    Num++
+                }else{
+                    special++
+                }
+            }
+            if((Password.length>=8)&&(Password.length<=16)&&(upper>=1)&&(lower>=1)&&(Num>=1)&&(special>=1)){
+                flagpassword=true
+            }
+
+
+            // Confirm Password
+            var Confirm=document.getElementById("cpassword").value 
+            var cpassword=false
+            if(Password==Confirm){
+                cpassword=true
+            }
+
+
+            // Final Validation
+            if((flagPhone == true)&&(mail == true)&&(flagpassword == true)&&(cpassword == true))
+            {
+                window.location.href="./index.html"
+            }
+            else
+            {
+                document.getElementById("error").innerHTML="Invalid Details"
+                document.getElementById("error").style.color="red"
+                document.getElementById("error").style.textAlign="center" 
+            }
+        }
+
+    </script>
+
+</head>
+
+<body background="img/loginbackground.jpg">
+    <div id="form" class="form">
+
+        <p>Name</p>
+        <input class="ip" type="text" placeholder="Name">
+
+        <p>Phone Number</p>
+        <input id="phone" class="ip" type="number" placeholder="Phone Number">
+        
+        <p>Email</p>
+        <input id="email" class="ip" type="email" placeholder="Email">
+
+        <p>Password</p>
+        <input id="password" class="ip" type="password" placeholder="Password">
+
+        <p>Conform Password</p>
+        <input id="cpassword" class="ip" type="password" placeholder="Conform Password"> 
+
+        <p id="error"></p>
+
+        <div class="button">
+            <input id="submit" class="submit" type="submit" value="SUBMIT" style="width: 100px; height: 50px;" onclick="SignUpValidation()">
+        </div>
+    </div>
+</body>
+</html>

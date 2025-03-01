@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotstar</title>
+    <link rel="stylesheet" href="C:\Users\devad\Desktop\HTML Own\index.css"></link>
+    <script>
+        function Login(){
+            var uname=document.getElementById("Username").value
+            var pword=document.getElementById("password").value
+            if(uname == "Kiruba" && pword == "Kiruba@123" )
+            {
+                window.location.href="file:///C:/Users/devad/Desktop/HTML%20Own/mmpage.html";
+            }
+            else
+            {
+                document.getElementById("verify").innerHTML="invalid Username&Password";   
+            }  
+            document.getElementById("verify").style.color='red'
+        }
+    </script>
+    
+</head>
+<body background="img/loginbackground.jpg" >
+    <section id="span-container">
+        <div class="signin">
+            <div class="content">
+                <h2>Sign In</h2>
+                <div class="form">
+                    <div class="inputBox">
+                        <input type="text" required id="Username">
+                        <i>Username</i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" required id="password">
+                        <i>password</i>
+                    </div>
+                    <div class="link">
+                        <a href="#">Forget password</a>
+                        <a class="link1" href="signup.html">Signup</a>
+                    </div> 
+                    <div class="inputBox" >
+                            <input type="submit" value="Login" onclick="Login()">
+                        <p id="verify"> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
